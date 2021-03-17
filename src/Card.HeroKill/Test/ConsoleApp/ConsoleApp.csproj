@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Card.HeroKill.Core\Card.HeroKill.Core.csproj" />
+    <ProjectReference Include="..\..\Card.HeroKill.Data\Card.HeroKill.Data.csproj" />
+    <ProjectReference Include="..\..\Card.HeroKill.Infrastructure\Card.HeroKill.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
