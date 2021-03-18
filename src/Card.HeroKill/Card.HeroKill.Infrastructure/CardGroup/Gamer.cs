@@ -18,34 +18,33 @@ namespace Card.HeroKill.Infrastructure.CardGroup
     /// </summary>
     public class Gamer
     {
-        private readonly CardBox _box;
+        public CardBox Box { get; set; }
 
         public List<CardInfo> Cards { get; set; }
 
-        #region fields
-        private WeaponCardInfo _weaponCard;
+        public WeaponCardInfo WeaponCardInfo { get; set; }
 
-        private AttackTheHorseCard _attackTheHorseCard;
+        public AttackTheHorseCard AttackTheHorseCard { get; set; }
 
-        private DefenseHorseCard _defenseHorseCard;
+        public DefenseHorseCard DefenseHorseCard { get; set; }
 
-        private ArmorCardInfo _armorCardInfo;
+        public ArmorCardInfo ArmorCardInfo { get; set; }
 
-        private int _health;
-
-        #endregion
-
-        public int Health => _health;
+        public int Health { get; set; }
 
         public string Name { get; }
         public int Camp { get; }
+        public int MaxHealth { get; }
+
+        public ISet<CardInfo> ChoiceCards { get; set; }
 
         public Gamer(CardBox box, int health, string name, int camp)
         {
-            this._health = health;
+            this.Health = health;
+            MaxHealth = health;
             Name = name;
             Camp = camp;
-            this._box = box;
+            this.Box = box;
             Cards = new List<CardInfo>();
         }
 
@@ -53,13 +52,13 @@ namespace Card.HeroKill.Infrastructure.CardGroup
         {
             for (int i = 0; i < len; i++)
             {
-                CardInfo card = _box.TakeOne();
+                CardInfo card = Box.TakeOne();
                 if (card == null) break;
                 Cards.Add(card);
             }
         }
 
-        public void Run(GroupCore group)
+        public virtual void Run(GroupCore group)
         {
 
             Console.WriteLine("curr game : " + this.Name);
@@ -84,6 +83,11 @@ namespace Card.HeroKill.Infrastructure.CardGroup
     isAlive:{game.Health > 0}
     cardLen:{game.Cards.Count}
 ");
+            }
+
+            while (true)
+            {
+
             }
 
             Console.ReadKey();
@@ -120,7 +124,7 @@ namespace Card.HeroKill.Infrastructure.CardGroup
                     foreach (var item in hashSet.OrderByDescending(u => u))
                     {
                         var card = Cards[item];
-                        _box.Recycle(card);
+                        Box.Recycle(card);
                         Cards.RemoveAt(item);
                     }
                     break;
