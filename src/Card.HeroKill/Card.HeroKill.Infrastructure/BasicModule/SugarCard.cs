@@ -25,7 +25,7 @@ namespace Card.HeroKill.Infrastructure.BasicModule
 
             gamer.Health++;
 
-            gamer.Cards.RemoveAt(gamer.ChoiceCards.First());
+            gamer.Cards.Remove(gamer.ChoiceCards.First());
 
         }
     }

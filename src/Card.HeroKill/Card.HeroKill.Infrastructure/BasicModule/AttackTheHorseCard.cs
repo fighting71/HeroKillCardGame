@@ -30,7 +30,7 @@ namespace Card.HeroKill.Infrastructure.BasicModule
 
             gamer.AttackTheHorseCard = this;
 
-            gamer.Cards.RemoveAt(gamer.ChoiceCards.First());
+            gamer.Cards.Remove(gamer.ChoiceCards.First());
 
         }
 

@@ -23,7 +23,7 @@ namespace Card.HeroKill.Infrastructure.Hero
         {
             var cards = this.Cards;
 
-            Dictionary<CardType, IGrouping<CardType, Data.Model.CardInfo>> dic = cards.GroupBy(u => u.Type).ToDictionary(u => u.Key, u => u);
+            Dictionary<CardType, Data.Model.CardInfo[]> dic = cards.GroupBy(u => u.Type).ToDictionary(u => u.Key, u => u.ToArray());
 
             if (this.ArmorCardInfo == null && dic.ContainsKey(CardType.Armor))
             {
